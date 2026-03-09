@@ -455,6 +455,22 @@ function spawnHearts() {
    7. 유틸리티
    ────────────────────────────────────────────────────────────── */
 
+/* ──────────────────────────────────────────────────────────────
+   8. 전역 함수 노출 — HTML onclick 대응 (type="module" 스코프)
+   ────────────────────────────────────────────────────────────── */
+window.checkPassword        = checkPassword;
+window.goNext               = goNext;
+window.selectPhoto          = selectPhoto;
+window.startAnalysis        = startAnalysis;
+window.showFinalOverlay     = showFinalOverlay;
+window.showReconsiderModal  = showReconsiderModal;
+window.closeReconsiderModal = closeReconsiderModal;
+
+
+/* ──────────────────────────────────────────────────────────────
+   9. 유틸리티
+   ────────────────────────────────────────────────────────────── */
+
 /** 단일 텍스트 설정 */
 function setText(id, text) {
   const el = document.getElementById(id);
