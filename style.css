@@ -2,6 +2,14 @@
    style.css — merry-me proposal website
    ═══════════════════════════════════════════════════════════════ */
 
+@font-face {
+  font-family: 'CustomHandwriting';
+  src: url('/Griun_Cocochoitoon-Rg.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 /* ── 비밀번호 화면 ────────────────────────────────────────────── */
 
@@ -623,7 +631,72 @@ body {
 }
 
 
-/* ── 11. 장면 7: 분석 결과 ────────────────────────────────────── */
+/* ── 10. 장면 7: 선택 이미지 요약 ────────────────────────────── */
+
+.summary-content {
+  gap: 1.6rem;
+}
+
+.summary-title {
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  color: var(--text-mid);
+  text-align: center;
+  line-height: 1.7;
+}
+
+.summary-slider {
+  width: 100%;
+  overflow: hidden;
+  /* 양 끝 페이드 효과 */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+.summary-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: summary-slide linear infinite;
+}
+
+@keyframes summary-slide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.summary-photo {
+  flex: 0 0 180px;
+  aspect-ratio: 3 / 4;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+.summary-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.summary-heart {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  color: var(--rose);
+  font-size: 1.1rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 480px) {
+  .summary-photo {
+    flex: 0 0 140px;
+  }
+}
+
+
+/* ── 11. 장면 8: 분석 결과 ────────────────────────────────────── */
 .result-content {
   gap: 1.3rem;
 }
@@ -887,7 +960,7 @@ body {
 }
 
 .final-line-1 {
-  font-family: 'Cute Font', sans-serif;
+  font-family: 'CustomHandwriting', sans-serif;
   font-size: clamp(2.8rem, 9vw, 4.0rem);
   font-weight: 400;
   color: var(--rose-deep);
@@ -895,7 +968,7 @@ body {
 }
 
 .final-line-2 {
-  font-family: 'Cute Font', sans-serif;
+  font-family: 'CustomHandwriting', sans-serif;
   font-size: clamp(1.1rem, 3.5vw, 1.45rem);
   color: var(--text-mid);
   line-height: 2.1;

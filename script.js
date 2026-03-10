@@ -164,7 +164,10 @@ const finalData = {
    ────────────────────────────────────────────────────────────── */
 
 let currentScene = 1;
-const TOTAL_SCENES = 10;
+const TOTAL_SCENES = 11;
+
+/** 각 스토리 장면에서 선택된 사진 src 저장 (인덱스 0~4) */
+const selectedPhotos = [];
 
 
 /* ──────────────────────────────────────────────────────────────
@@ -344,6 +347,10 @@ function selectPhoto(el, idx) {
     btn.disabled = true;
   });
 
+  // 선택된 사진 src 저장 (요약 화면에 사용)
+  const img = el.querySelector('img');
+  if (img) selectedPhotos[idx - 1] = img.src;
+
   // 잠시 후 다음 장면으로 이동
   setTimeout(goNext, 750);
 }
@@ -363,15 +370,56 @@ function transitionTo(targetIndex) {
   toEl.classList.add('active');
   currentScene = targetIndex;
 
+  // 선택 이미지 요약 장면 진입 시 그리드 빌드
+  if (targetIndex === 7) {
+    buildSummaryScene();
+  }
+
   // 프로포즈 장면 진입 시 타이핑 효과 시작
-  if (targetIndex === 10) {
+  if (targetIndex === 11) {
     setTimeout(startProposalTyping, 500);
   }
 }
 
 
 /* ──────────────────────────────────────────────────────────────
-   5. BGM
+   5. 선택 이미지 요약 장면
+   ────────────────────────────────────────────────────────────── */
+
+/** 선택된 사진 5장을 무한 자동 슬라이드로 표시 */
+function buildSummaryScene() {
+  const track = document.getElementById('summary-track');
+  if (!track) return;
+  track.innerHTML = '';
+
+  const photos = selectedPhotos.filter(Boolean);
+  if (!photos.length) return;
+
+  // 원본 + 복사본으로 seamless 루프 구성
+  [...photos, ...photos].forEach(src => {
+    const wrap = document.createElement('div');
+    wrap.className = 'summary-photo';
+
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = '선택한 순간';
+
+    const heart = document.createElement('div');
+    heart.className = 'summary-heart';
+    heart.setAttribute('aria-hidden', 'true');
+    heart.textContent = '♥';
+
+    wrap.append(img, heart);
+    track.appendChild(wrap);
+  });
+
+  // 사진 수에 비례한 속도 설정 (장당 2.5초)
+  track.style.animationDuration = (photos.length * 2.5) + 's';
+}
+
+
+/* ──────────────────────────────────────────────────────────────
+   6. BGM
    ────────────────────────────────────────────────────────────── */
 
 /** 히어로 버튼 클릭 시 BGM 재생 (볼륨 0 → 0.4 페이드인) */
@@ -412,7 +460,7 @@ function fadeBGM(target, duration) {
 
 /** "분석 시작" 버튼 클릭 */
 function startAnalysis() {
-  transitionTo(8);
+  transitionTo(9);
   // 장면 전환 후 시작
   setTimeout(runLoadingSequence, 450);
 }
@@ -451,7 +499,7 @@ function runLoadingSequence() {
   const finishAt = stepGap * (total + 1);
   setTimeout(() => {
     setProgress(fillEl, pctEl, 100);
-    setTimeout(() => transitionTo(9), 650);
+    setTimeout(() => transitionTo(10), 650);
   }, finishAt);
 }
 

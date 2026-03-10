@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="우리의 이야기">
   <title>우리의 이야기</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cute+Font&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -159,8 +156,19 @@
       </div>
     </section>
 
-    <!-- ─── 장면 7: AI 분석 시작 ─── -->
-    <section class="scene" id="scene-7" aria-label="관계 분석 시작">
+    <!-- ─── 장면 7: 선택 이미지 요약 ─── -->
+    <section class="scene" id="scene-7" aria-label="선택한 순간들">
+      <div class="center-content summary-content">
+        <p class="summary-title">우리가 함께 고른 순간들이에요</p>
+        <div class="summary-slider">
+          <div class="summary-track" id="summary-track"></div>
+        </div>
+        <button class="btn btn--primary" onclick="goNext()">다음</button>
+      </div>
+    </section>
+
+    <!-- ─── 장면 8: AI 분석 시작 ─── -->
+    <section class="scene" id="scene-8" aria-label="관계 분석 시작">
       <div class="center-content">
         <span class="badge" id="analyzer-badge"></span>
         <h2 class="section-title" id="analyzer-title"></h2>
@@ -170,8 +178,8 @@
       </div>
     </section>
 
-    <!-- ─── 장면 8: AI 분석 로딩 ─── -->
-    <section class="scene" id="scene-8" aria-label="분석 진행 중">
+    <!-- ─── 장면 9: AI 분석 로딩 ─── -->
+    <section class="scene" id="scene-9" aria-label="분석 진행 중">
       <div class="center-content">
         <div class="pulse-ring" aria-hidden="true">
           <div class="pulse-dot"></div>
@@ -187,8 +195,8 @@
       </div>
     </section>
 
-    <!-- ─── 장면 9: AI 분석 결과 ─── -->
-    <section class="scene" id="scene-9" aria-label="분석 결과">
+    <!-- ─── 장면 10: AI 분석 결과 ─── -->
+    <section class="scene" id="scene-10" aria-label="분석 결과">
       <div class="center-content result-content">
         <span class="badge" id="result-badge"></span>
         <div class="result-grid" id="result-grid"></div>
@@ -197,8 +205,8 @@
       </div>
     </section>
 
-    <!-- ─── 장면 10: 프로포즈 ─── -->
-    <section class="scene" id="scene-10" aria-label="프로포즈">
+    <!-- ─── 장면 11: 프로포즈 ─── -->
+    <section class="scene" id="scene-11" aria-label="프로포즈">
       <div class="center-content proposal-content">
         <p class="proposal-lead"    id="proposal-lead"></p>
         <p class="proposal-bridge"  id="proposal-bridge"></p>
