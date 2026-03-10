@@ -4,7 +4,15 @@
 
 @font-face {
   font-family: 'CustomHandwriting';
-  src: url('/Griun_Cocochoitoon-Rg.ttf') format('truetype');
+  src: url('/font/Griun_Cocochoitoon-Rg.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'SiteDefault';
+  src: url('/font/Cafe24Oneprettynight-v2.0.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -201,10 +209,7 @@ html, body {
 body {
   background: var(--ivory);
   color: var(--text);
-  /* 한국어 폰트 우선순위: macOS → Windows → Android */
-  font-family:
-    'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR',
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'SiteDefault', sans-serif;
   -webkit-font-smoothing: antialiased;
   word-break: keep-all;      /* 한국어 줄바꿈 자연스럽게 */
   overflow-wrap: break-word; /* 긴 단어 강제 줄바꿈 */
@@ -742,7 +747,7 @@ body {
 }
 
 .result-value {
-  font-size: 1.9rem;
+  font-size: 1.3rem;
   font-weight: 300;
   color: var(--rose-deep);
   line-height: 1;
@@ -1015,10 +1020,24 @@ body {
     aspect-ratio: 3 / 4; /* 모바일도 동일 비율 유지 */
   }
 
-  /* 분석 결과 카드: 세로 */
+  /* 분석 결과 카드: 세로 + 크기 축소 */
   .result-grid {
     grid-template-columns: 1fr;
-    max-width: 260px;
+    max-width: 220px;
+    gap: 0.6rem;
+  }
+
+  .result-card {
+    padding: 0.9rem 0.8rem;
+    gap: 0.3rem;
+  }
+
+  .result-value {
+    font-size: 1.2rem;
+  }
+
+  .result-label {
+    font-size: 0.76rem;
   }
 
   /* 진행률 바 */
