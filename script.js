@@ -25,7 +25,7 @@ const pwData = {
   label:    '우리만 아는 숫자',
   title:    '기억하고 있나요?',
   desc:     '우리가 처음 만난 그 날을\n숫자로 입력해줘요.',
-  hint:     '형식: YYMMDD  (예: 20230115)',
+  hint:     '형식: YYYYMMDD  (예: 20230115)',
   errorMsg: '틀렸네....?',
 };
 
